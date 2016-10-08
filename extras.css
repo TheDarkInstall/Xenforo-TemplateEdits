@@ -1,0 +1,236 @@
+/* Simplifies Avatar */
+
+.messageUserBlock .userTitle {
+display: none!important;
+}
+
+/* The following entries slim down thread list, making it look better across devices */
+
+.discussionListItem {
+padding: 0px;
+}
+
+.discussionListItem .titleText {
+background-color: @pageBackground;
+}
+
+.pairsJustified dd {
+float: right;
+text-align: right;
+color: @textCtrlText;
+}
+
+.discussionListItem .posterAvatar .avatarContainer {
+display: block;
+position: relative;
+background-color: @faintTextColor;
+border-radius: 10px;
+}
+
+.discussionListItem .stats .major {
+font-size: 12pt;
+line-height: 18px;
+color: @textCtrlText;
+}
+
+.avatar .img.m {
+width: 96px;
+height: 96px;
+border-radius: 5px;
+}
+
+.sidebar .visitorPanel .avatar img {
+border-radius: 7px;
+}
+
+/*Stick thread enhancements*/
+ 
+.discussionList .sticky {
+background-color: rgb(190,190,190) !important;
+border-radius: 7px;
+}
+ 
+.discussionList .sticky .posterAvatar, .discussionList .sticky .stats {   
+border-radius: 7px;
+}
+ 
+.discussionListItem .iconKey .sticky{
+border: 0px solid #d88585  !important;
+}
+ 
+.discussionList .sticky .avatar img,
+.discussionList .sticky .avatar .img, .avatarCropper {    
+}
+ 
+.discussionList .sticky .title a, .discussionList .sticky .DateTime, .discussionList .sticky .EditControl {
+color: #000000 !important;    
+}
+ 
+.discussionList .sticky .username, .discussionList .sticky .pairsJustified dt  {
+color: #000000 !important; 
+}
+
+.discussionList .sticky .stats dl  {    
+}
+ 
+.discussionList .sticky .itemPageNav a   {
+background-color: @secondaryLightest !important;
+Color: #000000 !important;
+}
+
+.discussionList .sticky .itemPageNav span {
+     color: #000000 !important;
+}
+.discussionList .sticky .muted {
+color: #373737 !important;   
+}
+ 
+.discussionListItem .stats
+		{
+border-radius: 7px;
+}
+
+/*Custom Thread Prefixes*/
+}
+
+.halffast
+{ 
+background: transparent url('http://www.tokyocycle.com/bbs/styles/uix/xenforo/gradients/form-button-white-25px.png') repeat-x top;
+padding: 0px 6px;
+margin: -1px 0;
+border: 2px solid transparent;
+border-radius: 4px;
+color: black; 
+background-color: #01c0f4; 
+border-color: #01c0f4; 
+display: inline-block;
+font-size: 10pt;
+}
+
+.ride
+{ 
+background: transparent url('http://www.tokyocycle.com/bbs/styles/uix/xenforo/gradients/form-button-white-25px.png') repeat-x top;
+padding: 0px 6px;
+margin: -1px 0;
+border: 2px solid transparent;
+border-radius: 4px;
+color: black;
+background-color: #00FF04; 
+border-color: #00FF04; 
+display: inline-block;
+font-size: 10pt;
+}
+
+
+/*Custom User Banners*/
+
+.my-style
+{
+background: url('@imagePath/xenforo/star.png')no-repeat;
+height: 30px;
+text-indent: -10000em;
+display: block;
+
+.GDI
+{
+font-size: 11px;
+background: transparent url('@imagePath/styles/uix/xenforo/gradients/form-button-white-25px.png') repeat-x top;
+padding: 1px 5px;
+border: 1px solid transparent;
+border-radius: 3px;
+box-shadow: 1px 1px 3px rgba(0,0,0, 0.25);
+text-align: center;
+color: white; 
+font-weight:bold; 
+background-color: #d6698e; 
+border-color: #d6698e; 
+border-top-right-radius: 0;
+border-top-left-radius: 0;
+height: 4px;
+}
+
+.GDI.wrapped
+{
+border-top-right-radius: 0;
+border-top-left-radius: 0;
+position: relative;
+}
+
+.GDI.wrapped span
+{
+position: absolute;
+top: -4px;
+width: 5px;
+height: 4px;
+background-color: inherit;
+}
+
+.GDI.wrapped span.before
+{
+border-top-left-radius: 3px;
+left: -1px;
+}
+		
+.GDI.wrapped span.after
+{
+border-top-right-radius: 3px;
+right: -1px;
+}
+
+.GDI.wrapped { margin-left: 0; margin-right: 0; }
+
+
+}
+
+/*XenCarta (Wiki-Style Plugin) Styling*/
+
+/*Internal Link Colour*/
+
+/* .wikiPage a:not(.externalLink) { color: #319437; } */
+
+
+.news_feed_page_global .breadBoxBottom
+{
+	display: none;
+}
+
+.breadBoxBottom
+{
+	display: none;
+}
+
+/* Change colour of the copyright text */
+#copyright {
+color: #ffffff !important;
+}
+ 
+/* Change colour of Terms and Rules */
+#legal a:link, #legal a:visited {
+color: #ffffff !important;
+}
+
+.discussionListItem .posterAvatar .avatarContainer {
+background-color: rgb(200, 200, 200);
+}
+
+/* Search DropDown */
+
+#QuickSearch .formPopup .secondaryControls {
+-webkit-box-shadow: 0 0 5px rgba(0,0,0,.2);
+-moz-box-shadow: 0 0 5px rgba(0,0,0,.2);
+-khtml-box-shadow: 0 0 5px rgba(0,0,0,.2);
+box-shadow: 0px 10px 10px rgba(0,0,0, 0.3);
+padding: 5px;
+-webkit-border-radius: 2px;
+-moz-border-radius: 2px;
+-khtml-border-radius: 2px;
+border-radius: 7px;
+background: rgba(200, 200, 200, 1);
+position: absolute;
+top: 35px;
+z-index: 7500;
+}
+
+#userBar .navTabs .navTab.Popup.PopupContainerControl.PopupOpen .navLink 
+{
+color: rgb(49, 148, 55);
