@@ -167,7 +167,9 @@
 								</xen:foreach>
 								</xen:if>
 								
-								
+<!-- RideWithGPS tab -->
+
+<a href="http://ridewithgps.com/users/697655" class="navLink">RideWithGPS</a>								
 								
 					<!-- responsive popup -->
 								<li class="navTab navigationHiddenTabs Popup PopupControl PopupClosed" style="display:none">	
