@@ -1,0 +1,83 @@
+.prefix
+{
+	@property "titlePrefix";
+	color: @textCtrlBackground;
+	background: transparent url('@imagePath/xenforo/gradients/form-button-white-25px.png') repeat-x top;
+	padding: 0px 6px;
+	margin: -1px 0;
+	border: 2px solid transparent;
+	border-radius: 4px;
+	display: inline-block;
+	@property "/titlePrefix";
+}
+
+a.prefixLink:hover
+{
+	text-decoration: none;
+}
+
+a.prefixLink:hover .prefix
+{
+	@property "titlePrefixHover";
+	color: @textCtrlText;
+	text-decoration: none;
+	background-color: @mutedTextColor;
+	padding: 0 6px;
+	border: 1px solid @primaryLighter;
+	@property "/titlePrefixHover";
+}
+
+.prefix a { color: inherit; }
+
+.prefix.prefixPrimary    { color: @primaryMedium; background-color: @primaryLighterStill; border-color: @primaryLighterStill; }
+.prefix.prefixSecondary  { color: @secondaryDark; background-color: @secondaryLighter; border-color: @secondaryLighter; }
+
+.prefix.prefixRed        { color: black; background-color: red; border-color: red; }
+.prefix.prefixGreen      { color: black; background-color: green; border-color: green; }
+.prefix.prefixOlive      { color: black; background-color: darkgreen; border-color: darkgreen; }
+.prefix.prefixLightGreen { color: black; background-color: lightgreen; border-color: lightgreen; }
+.prefix.prefixBlue       { color: black; background-color: blue; border-color: blue; }
+.prefix.prefixRoyalBlue  { color: black; background-color: royalblue; border-color: royalblue;  }
+.prefix.prefixSkyBlue    { color: black; background-color: darkblue; border-color: darkblue; }
+.prefix.prefixGray       { color: black; background-color: gray; border-color: #AAA; }
+.prefix.prefixSilver     { color: black; background-color: silver; border-color: silver; }
+.prefix.prefixYellow     { color: black; background-color: yellow; border-color: yellow; }
+.prefix.prefixOrange     { color: black; background-color: orange; border-color: orange; }
+
+.discussionListItem .prefix,
+.searchResult .prefix
+{
+	@property "discussionListPrefix";
+	font-size: 80%;
+	margin: 0;
+	line-height: 16px;
+	@property "/discussionListPrefix";
+	
+	font-weight: normal;
+}
+
+h1 .prefix
+{
+	@property "discussionListPrefix";
+	font-size: 80%;
+	margin: 0;
+	line-height: 16px;
+	@property "/discussionListPrefix";
+	
+	line-height: normal;
+}
+
+.breadcrumb span.prefix,
+.heading span.prefix
+{
+	@property "breadcrumbTitlePrefix";
+	font-style: italic;
+	font-weight: bold;
+	padding: 0;
+	margin: 0;
+	border: 0 none black;
+	border-radius: 0;
+	display: inline;
+	@property "/breadcrumbTitlePrefix";
+	color: inherit;
+}
