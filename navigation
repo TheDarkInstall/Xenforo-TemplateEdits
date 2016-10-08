@@ -1,0 +1,270 @@
+<xen:edithint template="navigation.css" />
+
+<div id="navigation" class="<xen:if is="{$canSearch} && ( @uix_searchPosition == 0 || ( @uix_searchPosition == 1 && ( @uix_navStyle == 2 || (@uix_navStyle == 3 && @uix_pageStyle != 1) ) ) || @uix_searchPosition == 2)">withSearch</xen:if> {xen:if @uix_stickyNavigation, 'stickyTop'}">
+	<div class="sticky_wrapper">
+		<div class="uix_navigationWrapper">
+		<xen:if is="@uix_pageStyle!=1">
+		<div class="pageWidth">
+		</xen:if>
+			<div class="pageContent">
+				<nav>
+					<div class="navTabs">
+						<xen:if is="@uix_pageStyle==1">
+						<div class="pageWidth">
+						</xen:if>
+							<ul class="publicTabs navLeft">
+	
+							<xen:if is="( @uix_navigationStickyLogo && @uix_stickyNavigation ) || @uix_navStyle == 2">
+							<li id="logo_small">
+								<a href="{$logoLink}">
+								<xen:if is="@uix_smallLogoPath">
+									<img src="@uix_smallLogoPath">
+								<xen:elseif is="@uix_logoText"/>
+									<h2 class="uix_textLogo"><xen:if is="@uix_logoTextIcon"><i class="uix_icon @uix_logoTextIcon"></i></xen:if><xen:if is="@uix_logoText">@uix_logoText</xen:if></h2>
+								<xen:else/>
+									<img src="@headerLogoPath" alt="{$xenOptions.boardTitle}" />
+								</xen:if>
+								</a>
+							</li>
+							</xen:if>
+							<xen:if is="@uix_leftCanvasTrigger_position == 0"><xen:include template="uix_offCanvasTrigger"><xen:set var="$canvasLocation" value="0" /></xen:include></xen:if>
+							
+							<!-- home -->
+							<xen:if is="{$showHomeLink}">
+								<li class="navTab home PopupClosed"><a href="{$homeLink}" class="navLink">{xen:phrase home}</a></li>
+							</xen:if>
+								
+								<!-- extra tabs: home -->
+								<xen:if is="{$extraTabs.home}">
+								<xen:foreach loop="$extraTabs.home" key="$extraTabId" value="$extraTab">
+									<xen:if is="{$extraTab.linksTemplate}">
+										<li class="navTab {$extraTabId} <xen:if is="@uix_removeTabLinks">{xen:if $extraTab.selected, 'selected'} Popup PopupControl PopupClosed<xen:else />{xen:if $extraTab.selected, 'selected', 'Popup PopupControl PopupClosed'}</xen:if>">
+										<a href="{$extraTab.href}" class="navLink{xen:if '!{xen:property uix_alwaysShowNavDropdownArrow}', ' NoPopupGadget'}"{xen:if '!{xen:property uix_alwaysShowNavDropdownArrow}', ' rel="Menu"'}>{$extraTab.title}<xen:if is="{$extraTab.counter}"><strong class="itemCount"><span class="Total">{$extraTab.counter}</span><span class="arrow"></span></strong></xen:if></a>
+										<a href="{$extraTab.href}" class="SplitCtrl" rel="Menu"></a>
+										
+										<div class="<xen:if is="@uix_removeTabLinks">Menu JsOnly tabMenu<xen:else />{xen:if {$extraTab.selected}, 'tabLinks', 'Menu JsOnly tabMenu'}</xen:if> {$extraTabId}TabLinks">
+											<div class="primaryContent menuHeader">
+												<h3>{$extraTab.title}</h3>
+												<div class="muted">{xen:phrase quick_links}</div>
+											</div>
+											{xen:raw $extraTab.linksTemplate}
+										</div>
+									</li>
+									<xen:else />
+										<li class="navTab {$extraTabId} {xen:if $extraTab.selected, 'selected', 'PopupClosed'}">
+											<a href="{$extraTab.href}" class="navLink{xen:if '!{xen:property uix_alwaysShowNavDropdownArrow}', ' NoPopupGadget'}"{xen:if '!{xen:property uix_alwaysShowNavDropdownArrow}', ' rel="Menu"'}>{$extraTab.title}<xen:if is="{$extraTab.counter}"><strong class="itemCount"><span class="Total">{$extraTab.counter}</span><span class="arrow"></span></strong></xen:if></a>
+											<xen:if is="!@uix_removeTabLinks"><xen:if is="{$extraTab.selected}"><div class="tabLinks"></div></xen:if></xen:if>
+										</li>
+									</xen:if>
+								</xen:foreach>
+								</xen:if>
+								
+								<!-- forums -->
+								<xen:if is="{$tabs.forums}">
+									<li class="navTab forums <xen:if is="@uix_removeTabLinks">{xen:if $tabs.forums.selected, 'selected'} Popup PopupControl PopupClosed<xen:else />{xen:if $tabs.forums.selected, 'selected', 'Popup PopupControl PopupClosed'}</xen:if>">
+										<a href="{$tabs.forums.href}" class="navLink{xen:if '!{xen:property uix_alwaysShowNavDropdownArrow}', ' NoPopupGadget'}"{xen:if '!{xen:property uix_alwaysShowNavDropdownArrow}', ' rel="Menu"'}>{$tabs.forums.title}</a>
+										<a href="{$tabs.forums.href}" class="SplitCtrl" rel="Menu"></a>
+										
+										<div class="<xen:if is="@uix_removeTabLinks">Menu JsOnly tabMenu<xen:else />{xen:if {$tabs.forums.selected}, 'tabLinks', 'Menu JsOnly tabMenu'}</xen:if> forumsTabLinks">
+											<div class="primaryContent menuHeader">
+												<h3>{$tabs.forums.title}</h3>
+												<div class="muted">{xen:phrase quick_links}</div>
+											</div>
+											<ul class="secondaryContent blockLinksList">
+											<xen:hook name="navigation_tabs_forums">
+												<xen:if is="{$visitor.user_id}"><li><a href="{xen:link 'forums/-/mark-read', $forum, 'date={$serverTime}'}" class="OverlayTrigger">{xen:phrase mark_forums_read}</a></li></xen:if>
+												<xen:if is="{$canSearch}"><li><a href="{xen:link search, '', 'type=post'}">{xen:phrase search_forums}</a></li></xen:if>
+												<xen:if is="{$visitor.user_id}">
+													<li><a href="{xen:link 'watched/forums'}">{xen:phrase watched_forums}</a></li>
+											<li><a href="{xen:link 'watched/threads'}">{xen:phrase watched_threads}</a></li>
+    </xen:if>
+    <xen:if is="{$visitor.user_id}">
+        <li><a href="{xen:link find-new/posts, '', 'recent=1'}" rel="nofollow">{xen:phrase recent_posts}</a></li>
+    </xen:if>
+    <li><a href="{xen:link 'find-new/posts'}" rel="nofollow">{xen:if $visitor.user_id, {xen:phrase new_posts}, {xen:phrase recent_posts}}</a></li>
+</xen:hook>
+											</ul>
+										</div>
+									</li>
+								</xen:if>
+								
+								<!-- extra tabs: middle -->
+								<xen:if is="{$extraTabs.middle}">
+								<xen:foreach loop="$extraTabs.middle" key="$extraTabId" value="$extraTab">
+									<xen:if is="{$extraTab.linksTemplate}">
+										<li class="navTab {$extraTabId} <xen:if is="@uix_removeTabLinks">{xen:if $extraTab.selected, 'selected'} Popup PopupControl PopupClosed<xen:else />{xen:if $extraTab.selected, 'selected', 'Popup PopupControl PopupClosed'}</xen:if>">
+										<a href="{$extraTab.href}" class="navLink{xen:if '!{xen:property uix_alwaysShowNavDropdownArrow}', ' NoPopupGadget'}"{xen:if '!{xen:property uix_alwaysShowNavDropdownArrow}', ' rel="Menu"'}>{$extraTab.title}<xen:if is="{$extraTab.counter}"><strong class="itemCount"><span class="Total">{$extraTab.counter}</span><span class="arrow"></span></strong></xen:if></a>
+										<a href="{$extraTab.href}" class="SplitCtrl" rel="Menu"></a>
+										
+										<div class="<xen:if is="@uix_removeTabLinks">Menu JsOnly tabMenu<xen:else />{xen:if {$extraTab.selected}, 'tabLinks', 'Menu JsOnly tabMenu'}</xen:if> {$extraTabId}TabLinks">
+											<div class="primaryContent menuHeader">
+												<h3>{$extraTab.title}</h3>
+												<div class="muted">{xen:phrase quick_links}</div>
+											</div>
+											{xen:raw $extraTab.linksTemplate}
+										</div>
+									</li>
+									<xen:else />
+										<li class="navTab {$extraTabId} {xen:if $extraTab.selected, 'selected', 'PopupClosed'}">
+											<a href="{$extraTab.href}" class="navLink{xen:if '!{xen:property uix_alwaysShowNavDropdownArrow}', ' NoPopupGadget'}"{xen:if '!{xen:property uix_alwaysShowNavDropdownArrow}', ' rel="Menu"'}>{$extraTab.title}<xen:if is="{$extraTab.counter}"><strong class="itemCount"><span class="Total">{$extraTab.counter}</span><span class="arrow"></span></strong></xen:if></a>
+											<xen:if is="!@uix_removeTabLinks"><xen:if is="{$extraTab.selected}"><div class="tabLinks"></div></xen:if></xen:if>
+										</li>
+									</xen:if>
+								</xen:foreach>
+								</xen:if>
+								
+								<!-- members -->
+								<xen:if is="{$tabs.members}">
+									<li class="navTab members <xen:if is="@uix_removeTabLinks">{xen:if $tabs.members.selected, 'selected'} Popup PopupControl PopupClosed<xen:else />{xen:if $tabs.members.selected, 'selected', 'Popup PopupControl PopupClosed'}</xen:if>">
+										<a href="{$tabs.members.href}" class="navLink{xen:if '!{xen:property uix_alwaysShowNavDropdownArrow}', ' NoPopupGadget'}"{xen:if '!{xen:property uix_alwaysShowNavDropdownArrow}', ' rel="Menu"'}>{$tabs.members.title}</a>
+										<a href="{$tabs.members.href}" class="SplitCtrl" rel="Menu"></a>
+										
+										<div class="<xen:if is="@uix_removeTabLinks">Menu JsOnly tabMenu<xen:else />{xen:if {$tabs.members.selected}, 'tabLinks', 'Menu JsOnly tabMenu'}</xen:if> membersTabLinks">
+											<div class="primaryContent menuHeader">
+												<h3>{$tabs.members.title}</h3>
+												<div class="muted">{xen:phrase quick_links}</div>
+											</div>
+											<ul class="secondaryContent blockLinksList">
+											<xen:hook name="navigation_tabs_members">
+												<li><a href="{xen:link members}">{xen:phrase notable_members}</a></li>
+												<xen:if is="{$xenOptions.enableMemberList}"><li><a href="{xen:link members/list}">{xen:phrase registered_members}</a></li></xen:if>
+												<li><a href="{xen:link online}">{xen:phrase current_visitors}</a></li>
+												<xen:if is="{$xenOptions.enableNewsFeed}"><li><a href="{xen:link recent-activity}">{xen:phrase recent_activity}</a></li></xen:if>
+												<xen:if is="{$canViewProfilePosts}"><li><a href="{xen:link find-new/profile-posts}">{xen:phrase new_profile_posts}</a></li></xen:if>
+											</xen:hook>
+											</ul>
+										</div>
+									</li>
+								</xen:if>
+									
+								
+									
+												
+								<!-- extra tabs: end -->
+								<xen:if is="{$extraTabs.end}">
+								<xen:foreach loop="$extraTabs.end" key="$extraTabId" value="$extraTab">
+								<xen:if is="{$extraTab.linksTemplate}">
+								<li class="navTab {$extraTabId} <xen:if is="@uix_removeTabLinks">{xen:if $extraTab.selected, 'selected'} Popup PopupControl PopupClosed<xen:else />{xen:if $extraTab.selected, 'selected', 'Popup PopupControl PopupClosed'}</xen:if>">
+								<a href="{$extraTab.href}" class="navLink{xen:if '!{xen:property uix_alwaysShowNavDropdownArrow}', ' NoPopupGadget'}"{xen:if '!{xen:property uix_alwaysShowNavDropdownArrow}', ' rel="Menu"'}>{$extraTab.title}<xen:if is="{$extraTab.counter}"><strong class="itemCount"><span class="Total">{$extraTab.counter}</span><span class="arrow"></span></strong></xen:if></a>
+								<a href="{$extraTab.href}" class="SplitCtrl" rel="Menu"></a>
+									
+								<div class="<xen:if is="@uix_removeTabLinks">Menu JsOnly tabMenu<xen:else />{xen:if {$extraTab.selected}, 'tabLinks', 'Menu JsOnly tabMenu'}</xen:if> {$extraTabId}TabLinks">
+								<div class="primaryContent menuHeader">
+								<h3>{$extraTab.title}</h3>
+								<div class="muted">{xen:phrase quick_links}</div>
+								</div>
+								{xen:raw $extraTab.linksTemplate}
+											
+							</div>
+													
+									</li>
+									<xen:else />
+										<li class="navTab {$extraTabId} {xen:if $extraTab.selected, 'selected', 'PopupClosed'}">
+											<a href="{$extraTab.href}" class="navLink{xen:if '!{xen:property uix_alwaysShowNavDropdownArrow}', ' NoPopupGadget'}"{xen:if '!{xen:property uix_alwaysShowNavDropdownArrow}', ' rel="Menu"'}>{$extraTab.title}<xen:if is="{$extraTab.counter}"><strong class="itemCount"><span class="Total">{$extraTab.counter}</span><span class="arrow"></span></strong></xen:if></a>
+											<xen:if is="!@uix_removeTabLinks"><xen:if is="{$extraTab.selected}"><div class="tabLinks"></div></xen:if></xen:if>
+										</li>
+									</xen:if>
+								</xen:foreach>
+								</xen:if>
+								
+								
+								
+					<!-- responsive popup -->
+								<li class="navTab navigationHiddenTabs Popup PopupControl PopupClosed" style="display:none">	
+												
+									<a rel="Menu" class="navLink NoPopupGadget"><i class="uix_icon uix_icon-navTrigger"></i><span class="uix_hide menuIcon">{xen:phrase menu}</span></a>
+									
+									<div class="Menu JsOnly blockLinksList primaryContent" id="NavigationHiddenMenu"></div>
+								</li>
+									
+								<xen:if is="!@uix_removeTabLinks">
+								<!-- no selection -->
+								<xen:if is="!{$selectedTab}">
+									<li class="navTab selected"><div class="tabLinks"></div></li>
+								</xen:if>
+								</xen:if>
+	
+								<xen:if is="!@uix_removeTabLinks && @uix_visitorTabsToUserBar">	
+									<xen:if is="{$tabs.account.selected}">
+									<li class="navTab selected">
+										<div class="tabLinks">
+											<ul class="secondaryContent blockLinksList">
+											<xen:hook name="navigation_tabs_account">
+												<li><a href="{xen:link account/personal-details}">{xen:phrase personal_details}</a></li>
+												<li><a href="{xen:link conversations}">{xen:phrase conversations}</a></li>
+												<xen:if is="{$xenOptions.enableNewsFeed}"><li><a href="{xen:link account/news-feed}">{xen:phrase your_news_feed}</a></li></xen:if>
+												<li><a href="{xen:link account/likes}">{xen:phrase likes_youve_received}</a></li>
+											</xen:hook>
+											</ul>
+										</div>
+									</li>
+									</xen:if>
+									<xen:if is="{$tabs.inbox.selected}">
+									<li class="navTab selected">
+										<div class="tabLinks">
+											<ul class="secondaryContent blockLinksList">
+												<li><a href="{xen:link conversations}">{xen:phrase conversations}</a></li>
+												<li><a href="{xen:link conversations/starred}">{xen:phrase starred_conversations}</a></li>
+												<li><a href="{xen:link conversations/yours}">{xen:phrase conversations_you_started}</a></li>
+											</ul>
+										</div>
+									</li>
+									</xen:if>
+								</xen:if>		
+	
+							</ul>
+							
+							
+							<xen:if hascontent="true">
+								<ul class="navRight visitorTabs">
+								
+								<xen:contentcheck>
+								
+									<xen:if is="@uix_postPagination && @uix_postPaginationPos == 0 && {$contentTemplate} == 'thread_view'">
+										<li class="navTab audentio_postPagination" id="audentio_postPagination"></li>
+									</xen:if>
+								
+									<xen:hook name="uix_navigation_right_start" />
+									
+									<xen:if is="!@uix_visitorTabsToUserBar">
+										<xen:include template="navigation_visitor_tab" />
+									</xen:if>
+									
+									<xen:if is="@uix_loginTriggerPosition == 1">
+										<xen:include template="uix_loginTab" />
+									</xen:if>
+									<xen:hook name="uix_navigation_right_end" />
+	
+									<xen:if is="@uix_searchPosition == 2 || ( @uix_searchPosition == 1  && ( @uix_navStyle == 2 || (@uix_navStyle == 3 && @uix_pageStyle != 1) ) )">
+										<xen:include template="uix_searchTab" />
+									</xen:if>
+									
+									<xen:if is="@uix_rightCanvasTrigger_position == 0"><xen:include template="uix_offCanvasTrigger"><xen:set var="$canvasLocation" value="1" /></xen:include></xen:if>
+	
+									<xen:if is="@uix_searchPosition == 0">
+										<xen:include template="uix_searchTab" />
+									</xen:if>
+								
+								</xen:contentcheck>
+								
+								</ul>
+								
+							</xen:if>
+							<xen:comment> OSTENSIBLY, SEARCH POSITION 2 </xen:comment>
+							<xen:if is="@uix_searchPosition == 2 || (@uix_searchPosition == 0 && @uix_removeTabLinks) || ( @uix_searchPosition == 1 && (@uix_navStyle == 2 || (@uix_navStyle == 3 && @uix_pageStyle != 1) ) )">
+								<xen:include template="uix_searchMinimal" />
+							</xen:if>						
+							
+							
+						<xen:if is="@uix_pageStyle==1"></div></xen:if>
+	
+					</div>
+	
+				<span class="helper"></span>
+					
+				</nav>
+			</div>
+		<xen:if is="@uix_pageStyle!=1"></div></xen:if>
+		</div>
+	</div>
+</div>
