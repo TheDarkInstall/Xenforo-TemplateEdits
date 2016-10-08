@@ -32,17 +32,17 @@ a.prefixLink:hover .prefix
 .prefix.prefixPrimary    { color: @primaryMedium; background-color: @primaryLighterStill; border-color: @primaryLighterStill; }
 .prefix.prefixSecondary  { color: @secondaryDark; background-color: @secondaryLighter; border-color: @secondaryLighter; }
 
-.prefix.prefixRed        { color: black; background-color: red; border-color: red; }
+.prefix.prefixRed        { color: black; background-color: rgb(255, 106, 106); border-color: rgb(243, 0, 0); }
 .prefix.prefixGreen      { color: black; background-color: green; border-color: green; }
-.prefix.prefixOlive      { color: black; background-color: darkgreen; border-color: darkgreen; }
+.prefix.prefixOlive      { color: black; background-color: #ffa6fc; border-color: #ff83fb; }
 .prefix.prefixLightGreen { color: black; background-color: lightgreen; border-color: lightgreen; }
-.prefix.prefixBlue       { color: black; background-color: blue; border-color: blue; }
-.prefix.prefixRoyalBlue  { color: black; background-color: royalblue; border-color: royalblue;  }
-.prefix.prefixSkyBlue    { color: black; background-color: darkblue; border-color: darkblue; }
+.prefix.prefixBlue       { color: black; background-color: rgb(111, 111, 255); border-color: #6161FF; }
+.prefix.prefixRoyalBlue  { color: black; background-color: royalblue; border-color: #81A9E1;  }
+.prefix.prefixSkyBlue    { color: black; background-color: rgb(100, 210, 255); border-color: rgb(20, 186, 255); }
 .prefix.prefixGray       { color: black; background-color: gray; border-color: #AAA; }
 .prefix.prefixSilver     { color: black; background-color: silver; border-color: silver; }
-.prefix.prefixYellow     { color: black; background-color: yellow; border-color: yellow; }
-.prefix.prefixOrange     { color: black; background-color: orange; border-color: orange; }
+.prefix.prefixYellow     { color: black; background-color: yellow; border-color: #E0E000; }
+.prefix.prefixOrange     { color: black; background-color: orange; border-color: #FFC520; }
 
 .discussionListItem .prefix,
 .searchResult .prefix
