@@ -44,6 +44,16 @@ a.prefixLink:hover .prefix
 .prefix.prefixYellow     { color: black; background-color: yellow; border-color: #E0E000; }
 .prefix.prefixOrange     { color: black; background-color: orange; border-color: #FFC520; }
 
+/* Pizza Ride Test */
+
+.prefix.prefixPIZZA {
+
+background: url("styles/default/xenforo/PizzaRidePrefix.png");
+background-repeat: no-repeat;
+padding-right: 4px;
+}
+/* Pizza Eaten */      
+
 .discussionListItem .prefix,
 .searchResult .prefix
 {
