@@ -1,0 +1,1084 @@
+/** Forms **/
+
+.xenForm
+{
+	margin: 10px auto;
+	max-width: @formWidth;
+}
+
+	.xenOverlay .xenForm
+	{
+		max-width: @overlayFormWidth;
+	}
+
+.xenForm .ctrlUnit > dd
+{
+	width: @ctrlUnitValueWidth;
+	box-sizing: border-box;
+	padding-right: @ctrlUnitEdgeSpacer;
+}
+
+.xenForm .ctrlUnit > dd .textCtrl
+{
+	box-sizing: border-box;
+	width: 100%;
+}
+
+	.xenForm .ctrlUnit > dd .textCtrl.indented
+	{
+		width: calc(100% - @formCtrlIndent);
+	}
+
+	.xenForm .ctrlUnit > dd .textCtrl[size],
+	.xenForm .ctrlUnit > dd .textCtrl.autoSize
+	{
+		width: auto !important;
+		min-width: 0;
+	}
+
+	.xenForm .ctrlUnit > dd .textCtrl.number
+	{
+		width: 150px;
+	}
+
+
+.xenForm > .sectionHeader:first-child,
+.xenForm > fieldset > .sectionHeader:first-child
+{
+	margin-top: 0;
+}
+
+/** Sections **/
+
+.xenForm fieldset,
+.xenForm .formGroup
+{
+	border-top: 1px solid @primaryLighterStill;
+	margin: 20px auto;
+}
+
+.xenForm > fieldset:first-child,
+.xenForm > .formGroup:first-child
+{
+	border-top: none;
+	margin: auto;
+}
+
+.xenForm .PreviewContainer + fieldset,
+.xenForm .PreviewContainer + .formGroup
+{
+	border-top: none;
+}
+
+.xenForm fieldset + .ctrlUnit,
+.xenForm .formGroup + .ctrlUnit,
+.xenForm .submitUnit
+{
+	border-top: 1px solid @primaryLighterStill;
+}
+
+.xenForm fieldset + .ctrlUnit,
+.xenForm .formGroup + .ctrlUnit
+{
+	padding-top: 10px;
+}
+
+.xenForm .primaryContent + .submitUnit,
+.xenForm .secondaryContent + .submitUnit
+{
+	margin-top: 0;
+	border-top: none;
+}
+
+.xenForm .ctrlUnit.submitUnit dd
+{	
+	line-height: 31px;
+	padding-top: 0;
+}
+
+	.ctrlUnit.submitUnit dd .explain,
+	.ctrlUnit.submitUnit dd .text,
+	.ctrlUnit.submitUnit dd label
+	{
+		line-height: 1.28;
+	}
+
+/* now undo that */
+
+.xenOverlay .ctrlUnit.submitUnit dd,
+.Menu .ctrlUnit.submitUnit dd,
+#QuickSearch .ctrlUnit.submitUnit dd
+{
+	border: none;
+	background: none;
+}
+
+.xenForm .ctrlUnit
+{
+	@property "ctrlUnit";
+
+	@property "/ctrlUnit";
+}
+
+	.xenForm .ctrlUnit.limited
+	{
+		display: none;
+	}
+
+	/** Sections Immediately Following Headers **/
+
+	.xenForm .sectionHeader + fieldset,
+	.xenForm .heading + fieldset,
+	.xenForm .subHeading + fieldset,
+	.xenForm .sectionHeader + .formGroup,
+	.xenForm .heading + .formGroup,
+	.xenForm .subHeading + .formGroup
+	{
+		border-top: none;
+		margin-top: 0;
+	}
+	
+.xenForm .formHiderHeader
+{
+	margin: 10px;
+	font-size: 15px;
+	font-weight: bold;
+}
+
+
+/** *********************** **/
+/** TEXT INPUTS             **/
+/** *********************** **/
+
+.textCtrl
+{
+	@property "textCtrl";
+	font-size: @uix_globalFontSize;
+	font-family: @uix_secondaryFont;
+	color: @textCtrlText;
+	background-color: @textCtrlBackground;
+	padding: 5px 3px;
+	margin-bottom: 2px;
+	border: 2px solid @contentText;
+	border-radius: @uix_globalBorderRadius;
+	outline: 0;
+	box-sizing: border-box;
+	min-height: @uix_formElementHeight;
+	@property "/textCtrl";
+}
+
+select.textCtrl
+{
+	word-wrap: normal;
+	-webkit-appearance: menulist;
+}
+
+select[multiple].textCtrl,
+select[size].textCtrl
+{
+	-webkit-appearance: listbox;
+}
+
+select[size="0"].textCtrl,
+select[size="1"].textCtrl
+{
+	-webkit-appearance: menulist;
+}
+
+textarea.textCtrl
+{
+	word-wrap: break-word;
+}
+
+	.textCtrl:focus,
+	.textCtrl.Focus
+	{
+		@property "textCtrlFocus";
+		border: 2px solid @uix_primaryColor;
+		@property "/textCtrlFocus";
+	}	
+
+	textarea.textCtrl:focus
+	{
+		@property "textCtrlTextareaFocus";
+
+		@property "/textCtrlTextareaFocus";
+	}
+
+	input.textCtrl.disabled,
+	textarea.textCtrl.disabled,
+	.disabled .textCtrl
+	{
+		@property "textCtrlDisabled";
+		font-style: italic;
+		color: rgb(100,100,100);
+		background-color: rgb(245,245,245);
+		@property "/textCtrlDisabled";
+	}
+	
+	.textCtrl.prompt
+	{
+		@property "formElementPrompt";
+		color: @faintTextColor;
+		@property "/formElementPrompt";
+	}
+	
+	.textCtrl:-moz-placeholder
+	{
+		/* needs to be in its own rule due to weird selector */
+		@property "formElementPrompt";
+		color: @faintTextColor;
+		@property "/formElementPrompt";
+	}
+	
+	.textCtrl::-moz-placeholder
+	{
+		/* needs to be in its own rule due to weird selector */
+		@property "formElementPrompt";
+		color: @faintTextColor;
+		@property "/formElementPrompt";
+	}
+
+	.textCtrl::-webkit-input-placeholder
+	{
+		/* needs to be in its own rule due to weird selector */
+		@property "formElementPrompt";
+		color: @faintTextColor;
+		@property "/formElementPrompt";
+	}
+	
+	.textCtrl:-ms-input-placeholder
+	{
+		/* needs to be in its own rule due to weird selector */
+		@property "formElementPrompt";
+		color: @faintTextColor;
+		@property "/formElementPrompt";
+	}
+	
+	.textCtrl.autoSize
+	{
+		width: auto !important;
+	}
+
+	.textCtrl.number,
+	.textCtrl.number input
+	{
+		text-align: right;
+		width: 150px;
+	}
+	
+	.textCtrl.fillSpace
+	{
+		width: 100%;
+		box-sizing: border-box;
+		_width: 95%;
+	}
+
+	.textCtrl.code,
+	.textCtrl.code input
+	{
+		@property "textCtrlCode";
+		font-family: Consolas, "Courier New", Courier, monospace;
+		white-space: pre;
+		word-wrap: normal;
+		direction: ltr;
+		@property "/textCtrlCode";
+	}
+	
+	input.textCtrl[type="password"]
+	{
+		font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+	}
+
+	input[type="email"],
+	input[type="url"]
+	{
+		direction: ltr;
+	}
+
+	.textCtrl.titleCtrl,
+	.textCtrl.titleCtrl input
+	{
+		font-size: 18pt;
+	}
+
+textarea.textCtrl.Elastic
+{
+	/* use for jQuery.elastic */
+	max-height: 300px;
+}
+
+/* for use with wrapped inputs */
+.textCtrlWrap
+{
+	display: inline-block;
+}
+
+.textCtrlWrap input.textCtrl
+{
+	padding: 0 !important;
+	margin: 0 !important;
+	border: none !important;
+	background: transparent !important;
+	border-radius: 0 !important;
+}
+
+.textCtrlWrap.blockInput input.textCtrl
+{
+	border-top: @textCtrl.border-top-width @textCtrl.border-top-style @textCtrl.border-top-color !important;
+	margin-top: 4px !important;
+}
+
+.taggingInput.textCtrl
+{
+	padding-top: {xen:calc 'max(0, @textCtrl.padding-top - 2)'}px;
+	min-height: 25px;
+}
+
+.taggingInput input
+{
+	margin: 0px;
+	font-size: 12px;
+	border: 1px solid transparent;
+	padding: 0;
+	background: transparent;
+	outline: 0;
+	color: inherit;
+	font-family: inherit;
+}
+
+.taggingInput .tag
+{
+	border: 1px solid @primaryLighter;
+	border-radius: 3px;
+	display: inline-block;
+	padding: 0 3px;
+	text-decoration: none;
+	background: @primaryLighterStill url('@imagePath/xenforo/gradients/form-button-white-25px.png') repeat-x top;
+	color: @primaryMedium;
+	margin-right: 3px;
+	margin-top: 2px;
+	font-size: 12px;
+	max-width: 98%;
+	box-shadow: 1px 1px 3px rgba(0,0,0, 0.25);
+}
+
+.disabled.taggingInput .tag
+{
+	opacity: 0.7;
+}
+
+	.disabled.taggingInput .tag a
+	{
+		pointer-events: none;
+	}
+
+	html .taggingInput .tag a
+	{
+		color: @primaryLight;
+		font-weight: bold;
+		text-decoration: none;
+	}
+
+.taggingInput .addTag
+{
+	display: inline-block;
+	min-width: 150px;
+	max-width: 100%;
+	margin-top: 2px;
+}
+
+.taggingInput .tagsClear
+{
+	clear: both;
+	width: 100%;
+	height: 0px;
+	float: none;
+}
+
+/** *********************** **/
+/** BUTTONS                 **/
+/** *********************** **/
+
+.button
+{
+	font-style: normal;
+	
+	@property "button";
+	font-weight: bold;
+	font-size: @uix_globalFontSize;
+	color: @primaryDark;
+	background-color: @primaryLight;
+	padding: 0px 6px;
+	border-width: 0;
+	border-top-color: rgb(255, 255, 255);
+	border-radius: @uix_globalBorderRadius;
+	text-align: center;
+	outline: none;
+	line-height: @uix_formElementHeight;
+	display: inline-block;
+	cursor: pointer;
+	box-sizing: border-box;
+	box-shadow: inset 0 -2px 0 rgba(0,0,0,.1);
+	-webkit-appearance: none;
+	height: @uix_formElementHeight;
+	@property "/button";
+}
+
+.button.smallButton
+{
+	font-size: 11px;
+	padding: 0px 4px;
+	line-height: 21px;
+	height: 21px;
+	border-radius: 5px;
+}
+
+.button.primary
+{
+	@property "buttonPrimary";
+	color: #FFF;
+	background-color: @uix_tertiaryColor;
+	@property "/buttonPrimary";
+}
+
+input.button.disabled,
+a.button.disabled,
+input.button.primary.disabled,
+a.button.primary.disabled,
+html .buttonProxy .button.disabled
+{
+	@property "buttonDisabled";
+	color: rgb(226, 226, 226);
+	background-color: rgb(154, 154, 154);
+	box-shadow: 0 0 0 transparent;
+	@property "/buttonDisabled";
+}
+
+	.button::-moz-focus-inner
+	{
+		border: none;
+	}
+
+	a.button
+	{
+		display: inline-block;
+		color: @button.color;
+	}
+
+	.button:hover,
+	.button[href]:hover,
+	.buttonProxy:hover .button
+	{
+		@property "buttonHover";
+		color: #FFF;
+		text-decoration: none;
+		background-color: rgb(164, 6, 43);
+		border-top-color: white;
+		@property "/buttonHover";
+	}
+
+	.button:focus
+	{
+		@property "buttonFocus";
+		border-color: @primaryLight;
+		@property "/buttonFocus";
+	}
+
+	.button:active,
+	.button[href]:active,
+	.button.ToggleButton.checked,
+	.buttonProxy:active .button
+	{
+		@property "buttonActive";
+		color: @primaryLighter;
+		background-color: @textCtrlText;
+		border-bottom-color: white;
+		box-shadow: 0px 0px 0px 0px transparent;
+		outline: 0;
+		@property "/buttonActive";
+	}
+
+	.button.ToggleButton
+	{
+		cursor: default;
+		width: auto;
+		color: @button.border-bottom-color;
+	}
+	
+	.button.ToggleButton.checked
+	{
+		background-color: rgb(255,150,50);
+	}
+
+	.button.inputSupplementary
+	{
+		width: 25px;
+		position: absolute;
+		top: 0px;
+		right: 0px;
+	}
+
+	.button.inputSupplementary.add
+	{
+		color: green;
+	}
+
+	.button.inputSupplementary.delete
+	{
+		color: red;
+	}
+
+	.submitUnit .button
+	{
+		min-width: 100px;
+		*min-width: 0;
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/** Control Units **/
+
+.xenForm .ctrlUnit
+{
+	position: relative;
+	margin: 10px auto;
+}
+
+{xen:helper clearfix, '.xenForm .ctrlUnit'}
+
+.xenForm .ctrlUnit.fullWidth
+{
+	overflow: visible;
+}
+
+/** Control Unit Labels **/
+
+.xenForm .ctrlUnit > dt
+{
+	@property "ctrlUnitLabel";
+	padding-top: 4px;
+	padding-right: 15px;
+	text-align: right;
+	vertical-align: top;
+	@property "/ctrlUnitLabel";
+	box-sizing: border-box;
+	width: @ctrlUnitLabelWidth;
+	float: left;
+}
+
+/* special long-text label */
+.xenForm .ctrlUnit > dt.explain
+{
+	font-size: 11px;
+	text-align: justify;
+}
+
+
+.xenForm .ctrlUnit.fullWidth dt,
+.xenForm .ctrlUnit.submitUnit.fullWidth dt
+{
+	float: none;
+	width: auto;
+	text-align: left;
+	height: auto;
+}
+
+.xenForm .ctrlUnit.fullWidth dt
+{
+	margin-bottom: 2px;
+}
+
+	.xenForm .ctrlUnit > dt label
+	{
+		margin-left: @ctrlUnitEdgeSpacer;
+	}
+
+	/** Hidden Labels **/
+
+	.xenForm .ctrlUnit.surplusLabel dt label
+	{
+		display: none;
+	}
+
+	/** Section Links **/
+
+	.ctrlUnit.sectionLink dt
+	{
+		text-align: left;
+		font-size: 11px;
+	}
+
+		.ctrlUnit.sectionLink dt a
+		{
+			margin-left: {xen:calc '10 + 1'}px; /*TODO: sectionHeader padding + border*/
+		}		
+
+	/** Hints **/
+
+	.ctrlUnit > dt dfn
+	{
+		@property "ctrlUnitLabelHint";
+		font-style: italic;
+		font-size: 10px;
+		color: @mutedTextColor;
+		margin-left: @ctrlUnitEdgeSpacer;
+		display: block;
+		@property "/ctrlUnitLabelHint";
+	}
+	
+	.ctrlUnit.fullWidth dt dfn
+	{
+		display: inline;
+		margin: 0;
+	}
+	
+		.ctrlUnit > dt dfn b,
+		.ctrlUnit > dt dfn strong
+		{
+			color: @dimmedTextColor;
+		}
+
+	/** Inline Errors **/
+
+	.ctrlUnit > dt .error
+	{
+		@property "ctrlUnitLabelError";
+		font-size: 10px;
+		color: red;
+		display: block;
+		@property "/ctrlUnitLabelError";
+	}
+	
+	.ctrlUnit > dt dfn,
+	.ctrlUnit > dt .error,
+	.ctrlUnit > dt a
+	{
+		font-weight: normal;
+	}
+
+.xenForm .ctrlUnit.submitUnit dt
+{
+	height: 19px;
+	display: block;
+}
+
+	.ctrlUnit.submitUnit dt.InProgress
+	{
+		background: transparent url('@imagePath/xenforo/widgets/ajaxload.info_B4B4DC_facebook.gif') no-repeat center center;
+	}
+
+/** Control Holders **/
+
+.xenForm .ctrlUnit > dd
+{
+	/*todo: kill property */
+	@property "ctrlUnitCtrl";
+
+	@property "/ctrlUnitCtrl";
+	float: left;
+}
+
+.xenForm .ctrlUnit.fullWidth > dd
+{
+	float: none;
+	width: auto;
+	padding-left: @ctrlUnitEdgeSpacer;
+}
+
+/** Explanatory paragraph **/
+
+.ctrlUnit > dd .explain
+{
+	@property "ctrlUnitCtrlExplain";
+	font-size: @uix_globalSmallFontSize;
+	color: @mutedTextColor;
+	margin-top: 2px;
+	@property "/ctrlUnitCtrlExplain";
+	/*TODO:max-width: auto;*/
+}
+	
+	.ctrlUnit > dd .explain b,
+	.ctrlUnit > dd .explain strong
+	{
+		color: @dimmedTextColor;
+	}
+
+/** List items inside controls **/
+
+.ctrlUnit > dd > * > li
+{
+	margin: 4px 0 8px;
+	padding-left: 1px; /* fix a webkit display bug */
+}
+
+.ctrlUnit > dd > * > li:first-child > .textCtrl:first-child
+{
+	margin-top: -3px;
+}
+
+.ctrlUnit > dd .break
+{
+	margin-bottom: 0.75em;
+	padding-bottom: 0.75em;
+}
+
+.ctrlUnit > dd .rule
+{
+	border-bottom: 1px solid @primaryLighterStill;
+}
+
+.ctrlUnit > dd .ddText
+{
+	margin-bottom: 2px;
+}
+
+/** Hints underneath checkbox / radio controls **/
+
+.ctrlUnit > dd > * > li .hint
+{
+	font-size: 11px;
+	color: @mutedTextColor;
+	margin-left: @formCtrlIndent;
+	margin-top: 2px;
+}
+
+/** DISABLERS **/
+
+.ctrlUnit > dd > * > li > ul,
+.ctrlUnit .disablerList,
+.ctrlUnit .indented
+{
+	margin-left: @formCtrlIndent;
+}
+
+.ctrlUnit > dd > * > li > ul > li:first-child
+{
+	margin-top: 6px;
+}
+
+.ctrlUnit > dd .disablerList > li,
+.ctrlUnit > dd .checkboxColumns > li,
+.ctrlUnit > dd .choiceList > li
+{
+	margin-top: 6px;
+}
+	
+/** Other stuff... **/
+
+.ctrlUnit > dd .helpLink
+{
+	font-size: 10px;
+}
+
+.ctrlUnit.textValue dt
+{
+	padding-top: 0px;
+}
+
+.button.spinBoxButton
+{
+	font-family: @body.font-family;
+	font-size: 11pt;
+}
+
+.unitPairsJustified li
+{
+	overflow: hidden;
+}
+
+	.unitPairsJustified li .label
+	{
+		float: left;
+	}
+	
+	.unitPairsJustified li .value
+	{
+		float: right;
+	}
+
+<xen:include template="form_date_picker.css" />
+<xen:include template="form_auto_complete.css" />
+
+/** status editor **/
+
+.statusEditorCounter
+{
+	color: green;
+}
+
+.statusEditorCounter.warning
+{
+	color: orange;
+	font-weight: bold;
+}
+
+.statusEditorCounter.error
+{
+	color: red;
+	font-weight: bold;
+}
+
+.explain .statusHeader
+{
+	display: inline;
+}
+
+.explain .CurrentStatus
+{
+	color: @contentText;
+	font-style: italic;
+	padding-left: 5px;
+}
+
+/* BB code-based editor styling */
+
+.xenForm .ctrlUnit.fullWidth dd .bbCodeEditorContainer textarea
+{
+	margin-left: 0;
+	min-height: 200px;
+}
+
+.bbCodeEditorContainer a
+{
+	font-size: 11px;
+}
+
+/*
+ * Fix silly top padding. This may require additional tags in the padding-top selector.
+ */
+
+.xenForm .ctrlUnit > dd
+{
+	padding-top: 4px;
+}
+
+	.xenForm .ctrlUnit.fullWidth > dd
+	{
+		padding-top: 0;
+	}
+
+.xenForm .ctrlUnit > dd > input,
+.xenForm .ctrlUnit > dd > select,
+.xenForm .ctrlUnit > dd > textarea,
+.xenForm .ctrlUnit > dd > ul,
+.xenForm .ctrlUnit > dd > .verticalShift
+{
+	margin-top: -4px;
+}
+
+	.xenForm .ctrlUnit.fullWidth > dd > input,
+	.xenForm .ctrlUnit.submitUnit > dd > input,
+	.xenForm .ctrlUnit.fullWidth > dd > select,
+	.xenForm .ctrlUnit.submitUnit > dd > select,
+	.xenForm .ctrlUnit.fullWidth > dd > textarea,
+	.xenForm .ctrlUnit.submitUnit > dd > textarea,
+	.xenForm .ctrlUnit.fullWidth > dd > ul,
+	.xenForm .ctrlUnit.submitUnit > dd > ul
+	{
+		margin-top: 0;
+	}
+	
+/*
+ * Multi-column checkboxes
+ */
+ 
+.xenForm .checkboxColumns > dd > ul,
+ul.checkboxColumns
+{
+	column-count: 2;
+	column-gap: 8px;
+}
+
+	.xenForm .checkboxColumns > dd > ul li,
+	ul.checkboxColumns li
+	{
+		column-break-inside: avoid;
+		break-inside: avoid-column;
+		margin-bottom: 4px;
+		padding-left: 1px;
+		display: inline-block;
+		width: 100%;
+	}
+	
+	.xenForm .checkboxColumns.blockLinksList > dd > ul li,
+	ul.checkboxColumns.blockLinksList li
+	{
+		display: block;
+	}
+
+.xenForm .checkboxColumns.multiple > dd > ul
+{
+	column-count: auto;
+	column-gap: normal;
+}
+
+.xenForm .checkboxColumns.multiple > dd
+{
+	column-count: 2;
+	column-gap: 8px;
+}
+
+.xenForm .checkboxColumns.multiple > dd > ul
+{
+	margin-bottom: 18px;
+}
+
+#recaptcha_image
+{
+	box-sizing: content-box;
+	max-width: 100%;
+}
+
+#recaptcha_image img
+{
+	max-width: 100%;
+}
+
+#helper_birthday { display: inline-block; }
+#helper_birthday > li
+{
+	display: inline;
+}
+html[dir=rtl] #helper_birthday input,
+html[dir=rtl] #helper_birthday select
+{
+	direction: rtl;
+}
+
+<xen:if is="@enableResponsive">
+@media (max-width:@maxResponsiveNarrowWidth)
+{
+	.Responsive .xenForm .ctrlUnit > dt
+	{
+		float: none;
+		width: auto;
+		text-align: left;
+		height: auto;
+	}
+
+		.Responsive .xenForm .ctrlUnit > dt label,
+		.Responsive .xenForm .ctrlUnit > dt dfn
+		{
+			margin-left: 0;
+		}
+
+	.Responsive .xenForm .ctrlUnit.submitUnit dt
+	{
+		height: auto;
+	}
+
+	.Responsive .xenForm .ctrlUnit > dd,
+	.Responsive .xenForm .ctrlUnit.fullWidth dd
+	{
+		float: none;
+		width: auto;
+		text-align: left;
+		height: auto;
+		padding-left: 0;
+		padding-right: 0;
+		overflow: hidden;
+	}
+
+	.Responsive .xenForm .checkboxColumns > dd > ul,
+	.Responsive ul.checkboxColumns
+	{
+		column-count: 1;
+	}
+	
+	.Responsive #ctrl_upload
+	{
+		max-width: 200px;
+	}
+	
+	.Responsive .xenForm .ctrlUnit > dd .textCtrl[size],
+	.Responsive .xenForm .ctrlUnit > dd .textCtrl.autoSize
+	{
+		width: 100% !important;
+	}
+	
+	.Responsive .xenForm .ctrlUnit > dd > input,
+	.Responsive .xenForm .ctrlUnit > dd > select,
+	.Responsive .xenForm .ctrlUnit > dd > textarea,
+	.Responsive .xenForm .ctrlUnit > dd > ul,
+	.Responsive .xenForm .ctrlUnit > dd > .verticalShift
+	{
+		margin-top: 0;
+	}
+}
+
+@media (max-width:@maxResponsiveMediumWidth)
+{
+	.Responsive .insideSidebar .xenForm .ctrlUnit > dt
+	{
+		float: none;
+		width: auto;
+		text-align: left;
+		height: auto;
+	}
+
+		.Responsive .insideSidebar .xenForm .ctrlUnit > dt label,
+		.Responsive .insideSidebar .xenForm .ctrlUnit > dt dfn
+		{
+			margin-left: 0;
+		}
+
+	.Responsive .insideSidebar .xenForm .ctrlUnit.submitUnit dt
+	{
+		height: auto;
+	}
+
+	.Responsive .xenForm .ctrlUnit {padding: 0 @uix_gutterWidth;}
+	.Responsive .xenForm.formOverlay .ctrlUnit {padding: 0;}
+	.Responsive .ctrlUnit > dt dfn {margin-left: 0;}
+	
+	.Responsive .insideSidebar .xenForm .ctrlUnit > dd,
+	.Responsive .insideSidebar .xenForm .ctrlUnit.fullWidth dd
+	{
+		float: none;
+		width: auto;
+		text-align: left;
+		height: auto;
+		padding-left: 0;
+		overflow: hidden;
+	}
+	
+	.Responsive .insideSidebar .xenForm .ctrlUnit > dd .textCtrl[size],
+	.Responsive .insideSidebar .xenForm .ctrlUnit > dd .textCtrl.autoSize
+	{
+		width: 100% !important;
+	}
+	
+	.Responsive .insideSidebar .xenForm .ctrlUnit > dd > input,
+	.Responsive .insideSidebar .xenForm .ctrlUnit > dd > select,
+	.Responsive .insideSidebar .xenForm .ctrlUnit > dd > textarea,
+	.Responsive .insideSidebar .xenForm .ctrlUnit > dd > ul
+	{
+		margin-top: -0;
+	}
+}
+
+@media (max-device-width:568px)
+{
+	.Responsive .textCtrl,
+	.Responsive .taggingInput input,
+	.Responsive .taggingInput .tag
+	{
+		font-size: 16px;
+	}
+}
+</xen:if>
