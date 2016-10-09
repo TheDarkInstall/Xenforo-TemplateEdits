@@ -6,4 +6,4 @@ background: url("styles/default/xenforo/PizzaRidePrefix.png");
 background-repeat: no-repeat;
 padding-right: 4px;
 }
-#Copy into main thread_prefixes upon completion
+/*Copy into main thread_prefixes upon completion*/
