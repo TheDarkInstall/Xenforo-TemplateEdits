@@ -29,9 +29,10 @@ a.prefixLink:hover .prefix
 
 .prefix a { color: inherit; }
 
+/*Colours changed to match theme of site, linking in with available pantone from kit maker*/
+
 .prefix.prefixPrimary    { color: @primaryMedium; background-color: @primaryLighterStill; border-color: @primaryLighterStill; }
 .prefix.prefixSecondary  { color: @secondaryDark; background-color: @secondaryLighter; border-color: @secondaryLighter; }
-
 .prefix.prefixRed        { color: black; background-color: rgb(255, 106, 106); border-color: rgb(243, 0, 0); }
 .prefix.prefixGreen      { color: black; background-color: green; border-color: green; }
 .prefix.prefixOlive      { color: black; background-color: #ffa6fc; border-color: #ff83fb; }
