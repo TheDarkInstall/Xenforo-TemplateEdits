@@ -1,0 +1,126 @@
+/* Removed UIX branding from footer, as this was clashing with the custom footer created for the site.*/
+/* Fixed some issues with UIX width control*/
+
+<xen:edithint template="footer.css" />
+
+<xen:include template="uix_colorSwatches" />
+
+<xen:hook name="footer">
+
+<xen:if hascontent="true">
+
+<div class="footer">
+	<xen:if is="@uix_pageStyle!=1 && !@uix_footer_forceCovered"><div class="pageWidth"></xen:if>
+		<div class="pageContent">
+			<xen:if is="@uix_pageStyle==1 || @uix_footer_forceCovered"><div class="pageWidth"></xen:if>
+			
+				<xen:contentcheck>
+				<xen:if is="@uix_widthToggle && {$visitor.user_id}">
+					<dl class="choosers chooser_widthToggle uix_widthToggle_lower">
+						<dt>{xen:phrase uix_toggle_width}</dt>
+						<dd><a href="javascript: uix.toggleWidth.toggle()" class='Tooltip' title="{xen:phrase uix_toggle_width}" rel="nofollow"><span class="uix_icon uix_widthToggle"></span></a></dd>
+					</dl>
+				</xen:if>
+				<xen:if is="{$canChangeStyle} OR {$canChangeLanguage}">
+					<dl class="choosers">
+						<xen:if is="{$canChangeStyle}">
+							<dt>{xen:phrase style}</dt>
+							<dd><a href="{xen:link 'misc/style', '', 'redirect={$requestPaths.requestUri}'}" class="OverlayTrigger Tooltip" title="{xen:phrase style_chooser}" rel="nofollow">{$visitorStyle.title}</a></dd>
+						</xen:if>
+						<xen:if is="{$canChangeLanguage}">
+							<dt>{xen:phrase language}</dt>
+							<dd><a href="{xen:link 'misc/language', '', 'redirect={$requestPaths.requestUri}'}" class="OverlayTrigger Tooltip" title="{xen:phrase language_chooser}" rel="nofollow">{$visitorLanguage.title}</a></dd>
+						</xen:if>
+					</dl>
+				</xen:if>
+				<xen:if is="{$uix_adStyler_enabled}">
+					<xen:if is="!@uix_hideAdStylerTrigger && ( {$uix_canUseStylerPanel} || {$uix_canUseStylerPresets} )">
+						<dl class="choosers chooser_AdStyler">
+							<dt>{xen:phrase uix_ad_styler}</dt>
+							<dd><a href="#" class='si-reveal-toggle Tooltip' title="{xen:phrase uix_open_ad_styler}" rel="nofollow">{xen:phrase uix_ad_styler}</a></dd>
+						</dl>
+					</xen:if>
+					<xen:if is="@uix_adStylerColorOptions && {$uix_canUseStylerSwatches}">
+						<dl class="choosers chooser_colorOptions">
+							<dt>{xen:phrase uix_color_options}</dt>
+							<dd><a href="#" class='uix_colorOptionsToggle Tooltip' title="{xen:phrase uix_toggle_color_options}" rel="nofollow">{xen:phrase uix_color_options}</a></dd>
+						</dl>
+					</xen:if>
+				</xen:if>
+				<xen:if is="!@uix_hideFooterMenu">
+				<ul class="footerLinks">
+					<xen:hook name="footer_links">
+						<xen:if is="{$homeLink}"><li><a href="{$homeLink}" class="homeLink">{xen:phrase home}</a></li></xen:if>
+						<xen:if is="{$xenOptions.contactUrl.type} === 'default'">
+							<li><a href="{xen:link 'misc/contact'}" class="OverlayTrigger" data-overlayOptions="{&quot;fixed&quot;:false}">{xen:phrase contact_us}</a></li>
+						<xen:elseif is="{$xenOptions.contactUrl.type} === 'custom'" />
+							<li><a href="{$xenOptions.contactUrl.custom}" {xen:if {$xenOptions.contactUrl.overlay}, 'class="OverlayTrigger" data-overlayOptions="{&quot;fixed&quot;:false}"'}>{xen:phrase contact_us}</a></li>
+						</xen:if>
+						<li><a href="{xen:link help}">{xen:phrase help}</a></li>
+					</xen:hook>
+					<xen:hook name="footer_links_legal">
+						<xen:if is="{$tosUrl}"><li><a href="{$tosUrl}">{xen:phrase terms_and_rules}</a></li></xen:if>
+						<xen:if is="{$xenOptions.privacyPolicyUrl}"><li><a href="{$xenOptions.privacyPolicyUrl}">{xen:phrase privacy_policy}</a></li></xen:if>
+					</xen:hook>
+					<li class="topLink"><a href="{$requestPaths.requestUri}#XenForo"><i class="uix_icon uix_icon-jumpToTop"></i> <span class="uix_hide">{xen:phrase go_to_top}</span></a></li>
+				</ul>
+				</xen:if>
+				
+			</xen:contentcheck>
+			<xen:if is="@uix_pageStyle==1"></div></xen:if>
+			<span class="helper"></span>
+		</div>
+	<xen:if is="@uix_pageStyle!=1"></div></xen:if>
+</div>
+
+<div id="uix_stickyFooterSpacer"></div>
+</xen:if>
+
+<xen:include template="uix_extendedFooter" />
+
+
+<div class="footerLegal">
+	<xen:if is="@uix_pageStyle!=1 && !@uix_copyright_forceCovered"><div class="pageWidth"></xen:if>
+		<div class="pageContent">
+			<xen:if is="@uix_pageStyle==1 || @uix_copyright_forceCovered"><div class="pageWidth"></xen:if>
+			<div id="copyright">
+			
+			
+			
+			
+				
+				
+			</div>
+			<xen:hook name="footer_after_copyright" />
+			<xen:if is="{$xenOptions.uix_socialMedia} && @uix_socialMedia">
+				<xen:include template="uix_socialMedia" />
+			</xen:if>	
+			<xen:if is="{$debugMode} AND ( ( {$visitor.is_admin} AND {$xenOptions.uix_debugAdmin} ) || !{$xenOptions.uix_debugAdmin} )">
+				<xen:if hascontent="true">
+					<dl class="pairsInline debugInfo" title="{$controllerName}-&gt;{$controllerAction}{xen:if $viewName, ' ({$viewName})'}">
+					<xen:contentcheck>
+						<xen:if is="{$page_time}"><dt>{xen:phrase timing}:</dt> <dd><a href="{$debug_url}" rel="nofollow">{xen:phrase x_seconds, 'time={xen:number $page_time, 4}'}</a></dd></xen:if>
+						<xen:if is="{$memory_usage}"><dt>{xen:phrase memory}:</dt> <dd>{xen:phrase x_mb, 'size={xen:number {xen:calc "{$memory_usage} / 1024 / 1024"}, 3}'}</dd></xen:if>
+						<xen:if is="{$db_queries}"><dt>{xen:phrase db_queries}:</dt> <dd>{xen:number {$db_queries}}</dd></xen:if>
+					</xen:contentcheck>
+					</dl>
+				</xen:if>
+			</xen:if>
+
+			<span class="helper"></span>
+		</div>
+	</div>	
+</div>
+
+</xen:hook>
+
+<xen:if is="@uix_jumpToTopFixed || @uix_jumpToBottomFixed">
+	<div id="uix_jumpToFixed">
+		<xen:if is="@uix_jumpToTopFixed ">
+			<a href="{$requestPaths.requestUri}#content" title="{xen:phrase go_to_top}" data-position="top"><i class="uix_icon uix_icon-jumpToTop"></i></a>
+		</xen:if>
+		<xen:if is="@uix_jumpToBottomFixed">
+			<a href="{$requestPaths.requestUri}#copyright" title="{xen:phrase bottom}" data-position="bottom"><i class="uix_icon uix_icon-jumpToBottom"></i></a>
+		</xen:if>
+	</div>
+</xen:if>
